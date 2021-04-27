@@ -5,7 +5,9 @@
  */
 package app;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.xml.bind.JAXBException;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Programa {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, JAXBException {
         //genera 50 aplicaciones y la añado en una lista
         ArrayList<App> listaApps = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
@@ -23,9 +25,14 @@ public class Programa {
             System.out.println(listaApp);
         }
         //Creamos el fichero con el metodo de otra clase(Creada anteriormente).
-        ServicioFicheroTSV prueba = new ServicioFicheroTSV();
-        prueba.generarFicheroDesdeLista(listaApps, "Pepito.tsv");
+        ServicioFicheroTSV ficheroTSV = new ServicioFicheroTSV();
+        ficheroTSV.generarFicheroDesdeLista(listaApps, "./aplicaciones.tsv");
         //Hacer lo mismo que en lo de los muebles(en el siguiente ejercicio)
+
+        ServicioFicheroJSON ficheroJSON = new ServicioFicheroJSON();
+        ficheroJSON.generarFicheroJSON(listaApps, "./aplicaciones.json");
+//        ServicioFicheroXML ficheroXML = new ServicioFicheroXML();
+//        ficheroXML.generarFicheroXML(listaApps, "aplicaciones.xml");
     }
 
 }
