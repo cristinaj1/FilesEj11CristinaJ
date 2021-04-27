@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -25,17 +26,10 @@ public class App {
     private double tamanioKb;
     private LocalDate fechaCreacion;
 
-    private final double MIN = 100.0;
-    private final double MAX = 1024.0;
-    private Random random = new Random();
+    private static Random random = new Random();
     private static int contadorApps = 1;
 
     public App() {
-        this.codUnico = contadorApps;
-        this.nombre = generarNombre();
-        this.descripcion = descripcion();
-        this.tamanioKb = generarTamanio();
-        this.fechaCreacion = fechaAleatoria();
         contadorApps++;
     }
 
@@ -47,25 +41,35 @@ public class App {
         this.fechaCreacion = fechaCreacion;
         contadorApps++;
     }
+    //Genera una App de forma aleatoria.
+    public static App crearAppAleatoria() {
+        App aleatorio = new App(contadorApps, generarNombre(), descripcion(), generarTamanio(), fechaAleatoria());
+        return aleatorio;
+    }
 
-    private double generarTamanio() {
+    //Genera tamaño aleatoria entre 100 y 1024
+    private static double generarTamanio() {
+        final double MIN = 100.0;
+        final double MAX = 1024.0;
         return random.doubles(1, MIN, MAX).sum();
     }
 
-    private String generarNombre() {
+    //Genera el nombre como se indica("app"+ condUnico + letra(a-z))
+    private static String generarNombre() {
         char letra = (char) (random.nextInt(122 - 97 + 1) + 97);
-        return "app" + codUnico + letra;
+        return "app" + contadorApps + letra;
     }
 
-    private String descripcion() {
+    //Crea 10 descripciones aleatorio y me devuelve 1.
+    private static String descripcion() {
         int numero = random.nextInt(10) + 1;
         String texto = "";
         switch (numero) {
             case 1:
-                texto = "Un programa de cocina";
+                texto = "Recetario";
                 break;
             case 2:
-                texto = "Un simulador de ps2";
+                texto = "Classroom";
                 break;
             case 3:
                 texto = "Spotify";
@@ -74,16 +78,16 @@ public class App {
                 texto = "Youtube";
                 break;
             case 5:
-                texto = "Intagram";
+                texto = "Netflix";
                 break;
             case 6:
-                texto = "Recreador de misas";
+                texto = "Meet";
                 break;
             case 7:
-                texto = "Mando a distancia";
+                texto = "Amazon Prime Video";
                 break;
             case 8:
-                texto = "Zoom";
+                texto = "HBO España";
                 break;
             case 9:
                 texto = "Juego de snake";
@@ -95,23 +99,28 @@ public class App {
         return texto;
     }
 
-    private LocalDate fechaAleatoria() {
+    //Crea una fecha aleatoria y me devuelve una(Con formato LocalDate)
+    private static LocalDate fechaAleatoria() {
         int mes = random.nextInt(12 - 1 + 1) + 1;
-        int dia = 0;
+        int dia;
 
         if (mes == 2) {
             dia = random.nextInt(28) + 1;
         } else if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
-            dia = random.nextInt(30) + 1;
+            dia = random.nextInt(31) + 1;
         } else {
             dia = random.nextInt(30) + 1;
         }
         int anio = random.nextInt(2021 - 2010 + 1) + 2010;
 
         LocalDate fecha = LocalDate.of(anio, mes, dia);
+//        SimpleDateFormat parser = new SimpleDateFormat("dd-MM-yyyy");
+//        LocalDate date = parser.parse(fecha);
+
         return fecha;
     }
 
+    //getters y setters
     public int getCodUnico() {
         return codUnico;
     }
@@ -152,9 +161,52 @@ public class App {
         this.fechaCreacion = fechaCreacion;
     }
 
+    //To String
     @Override
     public String toString() {
-        return nombre + "," + descripcion + "," + tamanioKb + "," + fechaCreacion;
+        return nombre + "\t" + descripcion + "\t" + tamanioKb + "\t" + fechaCreacion;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.codUnico;
+        hash = 79 * hash + Objects.hashCode(this.nombre);
+        hash = 79 * hash + Objects.hashCode(this.descripcion);
+        hash = 79 * hash + (int) (Double.doubleToLongBits(this.tamanioKb) ^ (Double.doubleToLongBits(this.tamanioKb) >>> 32));
+        hash = 79 * hash + Objects.hashCode(this.fechaCreacion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final App other = (App) obj;
+        if (this.codUnico != other.codUnico) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.tamanioKb) != Double.doubleToLongBits(other.tamanioKb)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (!Objects.equals(this.fechaCreacion, other.fechaCreacion)) {
+            return false;
+        }
+        return true;
+    }
+    
 
 }

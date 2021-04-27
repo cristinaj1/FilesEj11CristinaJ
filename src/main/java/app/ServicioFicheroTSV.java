@@ -15,33 +15,25 @@ import java.util.ArrayList;
  * @author Cris
  */
 public class ServicioFicheroTSV {
-
-    public static ArrayList<App> crearLista(ArrayList<App> lista) {
-        for (int i = 0; i < 10; i++) {
-            lista.add(new App());
-        }
-        return lista;
-    }
-
-    public static void main(String[] args) {
-        ArrayList<App> lista = new ArrayList<>();
-        crearLista(lista);
-
-        String idFichero = "App.tsv";
-        String tmp;
-
+    
+    public void generarFicheroDesdeLista(ArrayList<App> lista, String idFichero) {
+        
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-            flujo.newLine();
+            
             for (App app : lista) {
-                tmp = String.valueOf(app);
-                flujo.write(tmp.toString().replace(",", "\t"));
+                flujo.write(app.toString());
                 flujo.newLine();
             }
+            //Llamada -explicita- para que se guarde lo que se llama en el disco
+            //Sin flush funciona pero se recomienda.
             flujo.flush();
+            
             System.out.println("El fichero " + idFichero + " se ha creado correctamente");
+            
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        
     }
 
 }
