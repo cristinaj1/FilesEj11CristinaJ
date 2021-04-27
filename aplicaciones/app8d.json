@@ -1,0 +1,20 @@
+{
+  "codUnico" : 8,
+  "nombre" : "app8d",
+  "descripcion" : "HBO España",
+  "tamanioKb" : 401.82512054024426,
+  "fechaCreacion" : {
+    "year" : 2013,
+    "month" : "JUNE",
+    "monthValue" : 6,
+    "dayOfMonth" : 11,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 162,
+    "dayOfWeek" : "TUESDAY",
+    "leapYear" : false
+  }
+}

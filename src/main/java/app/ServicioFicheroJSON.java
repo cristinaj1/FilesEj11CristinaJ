@@ -22,8 +22,19 @@ public class ServicioFicheroJSON {
 
         mapeador.configure(SerializationFeature.INDENT_OUTPUT, true);
 
-        mapeador.writeValue(new File("aplicaciones.json"), listaApps);
+        mapeador.writeValue(new File("./appsjson/aplicaciones.json"), listaApps);
         System.out.println("El fichero " + idFichero + " se ha creado correctamente");
 
+    }
+    //Lo sobreescribo para que pueda haber 2 que nos puedan servir
+    public static void generarFicheroJSON(App aplicacion) throws IOException {
+
+        ObjectMapper mapeador = new ObjectMapper();
+
+        mapeador.configure(SerializationFeature.INDENT_OUTPUT, true);
+
+        // Escribe en un fichero JSON el objeto que le pasamos
+        mapeador.writeValue(new File("./aplicaciones/" + aplicacion.getNombre() + ".json"), aplicacion);
+        System.out.println("El fichero se ha creado correctamente");
     }
 }

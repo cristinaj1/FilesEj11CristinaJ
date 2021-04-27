@@ -1,0 +1,20 @@
+{
+  "codUnico" : 34,
+  "nombre" : "app34z",
+  "descripcion" : "HBO España",
+  "tamanioKb" : 593.823482923274,
+  "fechaCreacion" : {
+    "year" : 2016,
+    "month" : "FEBRUARY",
+    "monthValue" : 2,
+    "dayOfMonth" : 21,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 52,
+    "dayOfWeek" : "SUNDAY",
+    "leapYear" : true
+  }
+}

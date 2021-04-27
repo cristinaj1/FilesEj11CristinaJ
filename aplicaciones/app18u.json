@@ -1,0 +1,20 @@
+{
+  "codUnico" : 18,
+  "nombre" : "app18u",
+  "descripcion" : "Classroom",
+  "tamanioKb" : 770.4739416424203,
+  "fechaCreacion" : {
+    "year" : 2015,
+    "month" : "AUGUST",
+    "monthValue" : 8,
+    "dayOfMonth" : 29,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 241,
+    "dayOfWeek" : "SATURDAY",
+    "leapYear" : false
+  }
+}

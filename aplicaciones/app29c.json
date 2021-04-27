@@ -1,0 +1,20 @@
+{
+  "codUnico" : 29,
+  "nombre" : "app29c",
+  "descripcion" : "Classroom",
+  "tamanioKb" : 631.8399811525655,
+  "fechaCreacion" : {
+    "year" : 2010,
+    "month" : "JUNE",
+    "monthValue" : 6,
+    "dayOfMonth" : 4,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 155,
+    "dayOfWeek" : "FRIDAY",
+    "leapYear" : false
+  }
+}

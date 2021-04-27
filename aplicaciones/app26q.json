@@ -1,0 +1,20 @@
+{
+  "codUnico" : 26,
+  "nombre" : "app26q",
+  "descripcion" : "Meet",
+  "tamanioKb" : 375.2422170073903,
+  "fechaCreacion" : {
+    "year" : 2017,
+    "month" : "AUGUST",
+    "monthValue" : 8,
+    "dayOfMonth" : 22,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 234,
+    "dayOfWeek" : "TUESDAY",
+    "leapYear" : false
+  }
+}

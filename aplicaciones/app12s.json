@@ -1,0 +1,20 @@
+{
+  "codUnico" : 12,
+  "nombre" : "app12s",
+  "descripcion" : "Youtube",
+  "tamanioKb" : 458.081277647305,
+  "fechaCreacion" : {
+    "year" : 2016,
+    "month" : "OCTOBER",
+    "monthValue" : 10,
+    "dayOfMonth" : 5,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 279,
+    "dayOfWeek" : "WEDNESDAY",
+    "leapYear" : true
+  }
+}

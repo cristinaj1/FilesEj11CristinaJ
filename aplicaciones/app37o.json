@@ -1,0 +1,20 @@
+{
+  "codUnico" : 37,
+  "nombre" : "app37o",
+  "descripcion" : "Netflix",
+  "tamanioKb" : 288.0751820140862,
+  "fechaCreacion" : {
+    "year" : 2016,
+    "month" : "AUGUST",
+    "monthValue" : 8,
+    "dayOfMonth" : 8,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 221,
+    "dayOfWeek" : "MONDAY",
+    "leapYear" : true
+  }
+}

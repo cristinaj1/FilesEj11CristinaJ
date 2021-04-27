@@ -1,0 +1,20 @@
+{
+  "codUnico" : 9,
+  "nombre" : "app9c",
+  "descripcion" : "HBO España",
+  "tamanioKb" : 802.8489647567657,
+  "fechaCreacion" : {
+    "year" : 2011,
+    "month" : "JANUARY",
+    "monthValue" : 1,
+    "dayOfMonth" : 5,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 5,
+    "dayOfWeek" : "WEDNESDAY",
+    "leapYear" : false
+  }
+}

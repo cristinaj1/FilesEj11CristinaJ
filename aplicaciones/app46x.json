@@ -1,0 +1,20 @@
+{
+  "codUnico" : 46,
+  "nombre" : "app46x",
+  "descripcion" : "Meet",
+  "tamanioKb" : 318.37836576904476,
+  "fechaCreacion" : {
+    "year" : 2016,
+    "month" : "JUNE",
+    "monthValue" : 6,
+    "dayOfMonth" : 14,
+    "chronology" : {
+      "id" : "ISO",
+      "calendarType" : "iso8601"
+    },
+    "era" : "CE",
+    "dayOfYear" : 166,
+    "dayOfWeek" : "TUESDAY",
+    "leapYear" : true
+  }
+}
