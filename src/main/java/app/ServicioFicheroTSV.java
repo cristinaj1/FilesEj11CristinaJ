@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.xml.bind.JAXBException;
 
 /**
  *
@@ -18,7 +19,7 @@ public class ServicioFicheroTSV {
     
     public void generarFicheroDesdeLista(ArrayList<App> lista, String idFichero) {
         
-        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))){
             
             for (App app : lista) {
                 flujo.write(app.toString());

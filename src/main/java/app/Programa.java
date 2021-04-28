@@ -8,16 +8,17 @@ package app;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import javax.xml.bind.JAXBException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.xml.bind.JAXBException;
 
 /**
  *
  * @author cristina
  */
 public class Programa {
-    //Crea directorios 
+
+    //Crea directorios que nos servirán cuando queramos cambiar de rutas
     private static void creaDirectorio(String nombre) {
 
         Path directorio = Paths.get(nombre);
@@ -28,18 +29,19 @@ public class Programa {
             System.out.println(e.toString());
         }
     }
-    
 
     public static void main(String[] args) throws IOException, JAXBException {
-        //Creación de directorios
+
+        //Añadimos los directorios(Si no, nos da error en la ruta)
         creaDirectorio("appstsv");
         creaDirectorio("appsxml");
         creaDirectorio("appsjson");
         creaDirectorio("copias");
         creaDirectorio("aplicaciones");
+
         //genera 50 aplicaciones y la añado en una lista
         ArrayList<App> listaApps = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 1; i < 51; i++) {
             listaApps.add(App.crearAppAleatoria());
         }
         for (App listaApp : listaApps) {
@@ -48,17 +50,16 @@ public class Programa {
         //Creamos el fichero con el metodo de otra clase(Creada anteriormente).
         ServicioFicheroTSV ficheroTSV = new ServicioFicheroTSV();
         ficheroTSV.generarFicheroDesdeLista(listaApps, "./appstsv/aplicaciones.tsv");
-        //Hacer lo mismo que en lo de los muebles(en el siguiente ejercicio)
 
+        //Creamos el archivo en xml
+        ServicioFicheroXML generarFicheroXML = new ServicioFicheroXML();
+        generarFicheroXML.generarFicheroXML(listaApps, "./appsxml/aplicaciones.xml");
+
+        //Creamos los fichero JSON individualmente de cada tipo de app
         ServicioFicheroJSON ficheroJSON = new ServicioFicheroJSON();
         ficheroJSON.generarFicheroJSON(listaApps, "./appsjson/aplicaciones.json");
-         for (int i = 0; i < listaApps.size(); i++) {
-
+        for (int i = 0; i < listaApps.size(); i++) {
             ficheroJSON.generarFicheroJSON(listaApps.get(i));
-
         }
-//        ServicioFicheroXML ficheroXML = new ServicioFicheroXML();
-//        ficheroXML.generarFicheroXML(listaApps, "aplicaciones.xml");
     }
-
 }
