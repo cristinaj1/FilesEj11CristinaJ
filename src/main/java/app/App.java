@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -24,6 +25,7 @@ public class App {
     private String nombre;
     private String descripcion;
     private double tamanioKb;
+    @XmlJavaTypeAdapter(value = AdaptadorLocalDate.class)
     private LocalDate fechaCreacion;
 
     private static Random random = new Random();
