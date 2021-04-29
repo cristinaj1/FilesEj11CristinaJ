@@ -5,20 +5,24 @@
  */
 package app;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
  * @author Cris
  */
+// Anotación @XmlRootElement, nombre de la etiqueta XML raíz.
+@XmlRootElement(name = "mueble")
+// Anotación @XmlAccesorType define el elemento que usará JAXB durante el 
+// procesamiento de datos (en este caso por atributo)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class App {
 
     private int codUnico;
@@ -35,14 +39,15 @@ public class App {
         contadorApps++;
     }
 
-    public App(int codUnico, String nombre, String descripcion, double tamanioKb, LocalDate fechaCreacion) {
+    public App(int codUnico, String nombre, String descripcion, double tamanioKb, LocalDate fecha) {
         this.codUnico = codUnico;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tamanioKb = tamanioKb;
-        this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = fecha;
         contadorApps++;
     }
+
     //Genera una App de forma aleatoria.
     public static App crearAppAleatoria() {
         App aleatorio = new App(contadorApps, generarNombre(), descripcion(), generarTamanio(), fechaAleatoria());
@@ -116,8 +121,7 @@ public class App {
         int anio = random.nextInt(2021 - 2010 + 1) + 2010;
 
         LocalDate fecha = LocalDate.of(anio, mes, dia);
-//        SimpleDateFormat parser = new SimpleDateFormat("dd-MM-yyyy");
-//        LocalDate date = parser.parse(fecha);
+        fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
         return fecha;
     }
@@ -209,6 +213,5 @@ public class App {
         }
         return true;
     }
-    
 
 }

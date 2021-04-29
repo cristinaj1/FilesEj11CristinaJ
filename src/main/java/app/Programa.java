@@ -21,9 +21,9 @@ public class Programa {
     //Crea directorios que nos servirán cuando queramos cambiar de rutas
     private static void creaDirectorio(String nombre) {
 
-        Path directorio = Paths.get(nombre);
+        Path gestionDeDirectorios = Paths.get(nombre);
         try {
-            Files.createDirectory(directorio);
+            Files.createDirectory(gestionDeDirectorios);
         } catch (IOException e) {
             System.out.println("No se pudo crear");
             System.out.println(e.toString());
@@ -39,7 +39,7 @@ public class Programa {
         creaDirectorio("copias");
         creaDirectorio("aplicaciones");
 
-        //genera 50 aplicaciones y la añado en una lista
+        //Genera 50 aplicaciones y la añado en una lista
         ArrayList<App> listaApps = new ArrayList<>();
         for (int i = 1; i < 51; i++) {
             listaApps.add(App.crearAppAleatoria());
@@ -48,14 +48,17 @@ public class Programa {
             System.out.println(listaApp);
         }
         //Creamos el fichero con el metodo de otra clase(Creada anteriormente).
+        //pasamos lista y la ruta que queremos y lo genera
         ServicioFicheroTSV ficheroTSV = new ServicioFicheroTSV();
         ficheroTSV.generarFicheroDesdeLista(listaApps, "./appstsv/aplicaciones.tsv");
 
         //Creamos el archivo en xml
+        //pasamos lista y la ruta que queremos y lo genera
         ServicioFicheroXML generarFicheroXML = new ServicioFicheroXML();
         generarFicheroXML.generarFicheroXML(listaApps, "./appsxml/aplicaciones.xml");
 
         //Creamos los fichero JSON individualmente de cada tipo de app
+        //pasamos lista y la ruta que queremos y lo genera
         ServicioFicheroJSON ficheroJSON = new ServicioFicheroJSON();
         ficheroJSON.generarFicheroJSON(listaApps, "./appsjson/aplicaciones.json");
         for (int i = 0; i < listaApps.size(); i++) {
